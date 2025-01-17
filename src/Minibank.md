@@ -1,7 +1,10 @@
 # Minibank \- OOP-utmaning
 
-// 2025-01-10
-Tid: Fram till lunch
+// 2025-01-10, v1
+Tid: Fram till lunch.
+
+// 2025-01-16, v2
+Tid: Ingen deadline.
 
 ## Funktionella krav
 

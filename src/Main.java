@@ -7,15 +7,15 @@ public class Main {
      * Such as displaying menus and handling user choices.
      */
 
-
     static Scanner sc = new Scanner(System.in);
     static UserManager userManager = new UserManager(); // Shared instance.
     static UserService userService = new UserService(userManager); // Pass it here.
+    static Styling st = new Styling();
 
     public static void main(String[] args) {
         boolean active = true;
         while (active) {
-            System.out.println("\nBank Application");
+            System.out.println("\n" + st.MAGENTA + "Bank Application" + st.RESET);
             System.out.println("1. Create user with Savings & Payroll accounts.");
             System.out.println("2. Log in");
             System.out.println("3. Exit");
