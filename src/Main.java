@@ -10,6 +10,7 @@ public class Main {
     static Scanner sc = new Scanner(System.in);
     static UserManager userManager = new UserManager(); // Shared instance.
     static UserService userService = new UserService(userManager); // Pass it here.
+    static AuthenticationService authenticationService = new AuthenticationService(userManager);
     static Styling st = new Styling();
 
     public static void main(String[] args) {
@@ -27,7 +28,8 @@ public class Main {
                     userService.createUser();
                     break;
                 case "2":
-                    login();
+                    // Delegate login to AuthenticationService.
+                    authenticationService.login();
                     break;
                 case "3":
                     active = false;
@@ -35,38 +37,4 @@ public class Main {
             }
         }
     }
-
-// _____________________________________________________________________________
-
-    static void login() {
-        int attempts = 0; // Track the number of login attempts.
-        final int MAX_ATTEMPTS = 3; // Maximum allowed attempts.
-
-        while (attempts < MAX_ATTEMPTS) {
-            System.out.println("Enter person number:");
-            long personNumber = Long.parseLong(sc.nextLine());
-
-            System.out.println("Enter PIN code:");
-            int pinCode = Integer.parseInt(sc.nextLine());
-
-            User user = userManager.findUser(personNumber, pinCode);
-            if (user != null) {
-                System.out.println("Logged in successfully!");
-                System.out.println("Payroll Account: " + user.getPayrollAccount());
-                System.out.println("Savings Account: " + user.getSavingsAccount());
-                return; // Exit the login method on successful login.
-            }
-
-            attempts++; // Increment attempt counter.
-            System.out.println("Invalid person number or PIN. Attempts left: " + (MAX_ATTEMPTS - attempts));
-
-            if (attempts >= MAX_ATTEMPTS) {
-                System.out.println("Maximum login attempts reached. Exiting program.");
-                System.exit(0); // Exit the program after 3 failed attempts.
-            }
-        } // while loop
-    } // login method
-
-// _____________________________________________________________________________
-
 }
