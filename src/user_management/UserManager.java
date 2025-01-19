@@ -1,9 +1,11 @@
+package user_management;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class UserManager {
     /**
-     * Business Logic, User Data Management
+     * Business Logic, "User" Data Management
      */
 
     // List to store created users.

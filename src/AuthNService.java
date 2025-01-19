@@ -1,13 +1,16 @@
+import user_management.User;
+import user_management.UserManager;
+
 import java.util.Scanner;
 
-public class AuthenticationService {
+public class AuthNService {
     /**
      * Is responsible for all login-related logic.
      */
 
     private UserManager userManager;
 
-    public AuthenticationService(UserManager userManager) {
+    public AuthNService(UserManager userManager) {
         this.userManager = userManager;
     }
 
@@ -26,8 +29,8 @@ public class AuthenticationService {
             User user = userManager.findUser(personNumber, pinCode);
             if (user != null) {
                 System.out.println("Logged in successfully!");
-                System.out.println("Payroll Account: " + user.getPayrollAccount());
-                System.out.println("Savings Account: " + user.getSavingsAccount());
+                System.out.println("Payroll a/c no: " + user.getPayrollAccount() + " Balance: " + user.getPayrollBalance());
+                System.out.println("Savings a/c no: " + user.getSavingsAccount() + " Balance: " + user.getSavingsBalance());
                 return user; // Return the logged-in user.
             }
 

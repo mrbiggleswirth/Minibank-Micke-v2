@@ -1,3 +1,7 @@
+package user_management;
+
+import static utilities.Styling.*;
+
 public class User {
     private static int nextPayrollAccountNumber = 10; // Start from 10.
     private static int nextSavingsAccountNumber = 10; // Start from 10.
@@ -36,6 +40,27 @@ public class User {
 
     public void depositToSavings(double amount) {
         savingsBalance += amount;
+    }
+
+// _____________________________________________________________________________
+// UserMenu
+
+    public void viewPayrollBalance() {
+        System.out.println("Payroll a/c balance: " + YELLOW + payrollBalance + RESET);
+    }
+
+    public void viewSavingsBalance() {
+        System.out.println("Savings a/c balance: " + YELLOW + savingsBalance + RESET);
+    }
+
+    public void depositToPayrollAccount(double amount) {
+        depositToPayroll(amount);
+        System.out.println("Deposited " + amount + " to Payroll a/c.");
+    }
+
+    public void depositToSavingsAccount(double amount) {
+        depositToSavings(amount);
+        System.out.println("Deposited " + amount + " to Savings a/c.");
     }
 
 // _____________________________________________________________________________

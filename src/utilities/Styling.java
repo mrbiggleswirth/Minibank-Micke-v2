@@ -1,3 +1,5 @@
+package utilities;
+
 public class Styling {
     /**
      * ANSI escape codes for colored output.
