@@ -67,6 +67,7 @@ public class TransactionService {
         User recipient = userManager.findUser(recipientPersonNumber, 0);
         if (recipient == null) {
             System.out.println(RED + "Recipient not found. Transaction aborted." + RESET);
+            return; // Stop further execution.
         }
 
 // _____________________________________________________________________________
