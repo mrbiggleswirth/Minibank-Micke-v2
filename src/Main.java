@@ -1,3 +1,4 @@
+import banking.TransactionService;
 import user_management.User;
 import user_management.UserManager;
 import user_management.UserService;
@@ -8,27 +9,31 @@ import static utilities.Styling.*;
 public class Main {
     /**
      * ===== Summary =====
-     * AuthNService: Handles user login and authentication (AuthN).
-     *         User: Represents user data and behavior (a/c details, balance).
-     *  UserManager: Manages user data and handles user creation and look-up.
-     *  UserService: Manages user creation and logic related to user setup.
-     *     UserMenu: Displays user-specific menu options & handles user interactions.
-     *      utilities.Styling: Provides styling and color codes for Terminal output.
      *
+     * - AuthNService: Handles user login and authentication (AuthN).
+     *         - User: Represents user data and behavior (a/c details, balance).
+     *  - UserManager: Manages user data and handles user creation and look-up.
+     *  - UserService: Manages user creation and logic related to user setup.
+     *     - UserMenu: Displays user-specific menu options & handles user interactions.
      *
-     * The Main class delegates the task of user creation to 'UserService'.
-     * This makes it less cluttered and focuses more on managing the app's flow.
-     * Such as displaying menus and handling user choices.
+     * - TransactionService: Manages all transaction-related operations.
+     *            - Styling: Provides styling and color codes for Terminal output.
+     *
+     * ___________________________________________________________________________________
+     *
+     * The Main class delegates tasks like user creation, login, and transactions
+     * to appropriate services, focusing solely on managing the application flow.
      *
      * Shared State:
-     * 'UserManager' holds the list of users. By passing the same instance
-     * to 'UserService', both classes can access and modify the same data.
+     * 'UserManager' holds the list of users. By passing the same instance to services,
+     * all classes access and modify the same data consistently.
      */
 
     static Scanner sc = new Scanner(System.in);
     static UserManager userManager = new UserManager(); // Shared instance.
     static UserService userService = new UserService(userManager); // Pass it here.
     static AuthNService authNService = new AuthNService(userManager);
+    static TransactionService transactionService = new TransactionService(userManager);
 
     public static void main(String[] args) {
         boolean active = true;
@@ -48,7 +53,7 @@ public class Main {
                     // Delegate login to 'AuthNService'.
                     User loggedInUser = authNService.login();
                     if (loggedInUser != null) {
-                        UserMenu userMenu = new UserMenu(loggedInUser); // Pass logged-in user to 'UserMenu'.
+                        UserMenu userMenu = new UserMenu(loggedInUser, transactionService); // Pass logged-in user to 'UserMenu'.
                         userMenu.showUserMenu(); // Show the user menu after successful login.
                     }
                     break;

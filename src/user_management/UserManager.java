@@ -5,7 +5,8 @@ import java.util.List;
 
 public class UserManager {
     /**
-     * Business Logic, "User" Data Management
+     * ===== Business Logic, "User" Data Management =====
+     *  - UserManager: Manages user data and handles user creation and look-up.
      */
 
     // List to store created users.
@@ -23,6 +24,8 @@ public class UserManager {
         return users;
     }
 
+// _____________________________________________________________________________
+
     // Method to find a user by their person number and PIN code (for login).
     public User findUser(long personNumber, int pinCode) {
         for (User user : users) {
@@ -32,4 +35,9 @@ public class UserManager {
         }
         return null; // Return null if no matching user is found.
     }
+
+// _____________________________________________________________________________
+
+
+
 }

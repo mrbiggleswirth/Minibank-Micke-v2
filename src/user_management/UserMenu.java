@@ -1,16 +1,18 @@
 package user_management;
 
 import java.util.Scanner;
+import banking.TransactionService;
 import static utilities.Styling.*;
 
 public class UserMenu {
     private User loggedInUser;
+    private TransactionService transactionService;
     private Scanner sc = new Scanner(System.in);
-    private double amountPayroll; // Declare class-level variables for deposit amounts.
-    private double amountSavings; // Declare class-level variables for deposit amounts.
 
-    public UserMenu(User loggedInUser) {
+    // Constructor
+    public UserMenu(User loggedInUser, TransactionService transactionService) {
         this.loggedInUser = loggedInUser;
+        this.transactionService = transactionService;
     }
 
     public void showUserMenu() {
@@ -21,7 +23,8 @@ public class UserMenu {
             System.out.println("2. View Savings a/c balance.");
             System.out.println("3. Deposit to Payroll a/c.");
             System.out.println("4. Deposit to Savings a/c.");
-            System.out.println("5. Logout");
+            System.out.println("5. Transfer funds.");
+            System.out.println("6. Logout");
 
             String selection = sc.nextLine();
             switch (selection) {
@@ -33,15 +36,19 @@ public class UserMenu {
                     break;
                 case "3":
                     System.out.println("Enter amount to deposit to Payroll a/c:");
-                    amountPayroll = Double.parseDouble(sc.nextLine());
+                    double amountPayroll = Double.parseDouble(sc.nextLine());
                     loggedInUser.depositToPayrollAccount(amountPayroll);
                     break;
                 case "4":
                     System.out.println("Enter amount to deposit to Savings a/c:");
-                    amountSavings = Double.parseDouble(sc.nextLine());
+                    double amountSavings = Double.parseDouble(sc.nextLine());
                     loggedInUser.depositToSavingsAccount(amountSavings);
                     break;
                 case "5":
+                    // Delegate to TransactionService.
+                    transactionService.transferFunds(loggedInUser);
+                    break;
+                case "6":
                     loggedIn = false;
                     System.out.println("Logging out...");
                     break;
