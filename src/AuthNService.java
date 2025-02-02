@@ -29,8 +29,12 @@ public class AuthNService {
             User user = userManager.findUser(personNumber, pinCode);
             if (user != null) {
                 System.out.println("Logged in successfully!");
-                System.out.println("Payroll a/c no: " + user.getPayrollAccount() + " , Balance: " + BRIGHT_YELLOW + user.getPayrollBalance() + RESET);
-                System.out.println("Savings a/c no: " + user.getSavingsAccount() + " , Balance: " + BRIGHT_YELLOW + user.getSavingsBalance() + RESET);
+
+                System.out.println("Payroll a/c no: " + user.getPayrollAccount() +
+                    " , Balance: " + BRIGHT_YELLOW + user.getPayrollBalance() + RESET);
+
+                System.out.println("Savings a/c no: " + user.getSavingsAccount() +
+                    " , Balance: " + BRIGHT_YELLOW + user.getSavingsBalance() + RESET);
                 return user; // Return the logged-in user.
             }
 

@@ -46,11 +46,16 @@ public class User {
 // UserMenu
 
     public void viewPayrollBalance() {
-        System.out.println("Payroll a/c balance: " + YELLOW + payrollBalance + RESET);
+        System.out.println("Payroll a/c balance: " + BRIGHT_YELLOW + payrollBalance + RESET);
+
+        /*
+        System.out.println("Payroll a/c no: " + user.getPayrollAccount() +
+            " , Balance: " + BRIGHT_YELLOW + user.getPayrollBalance() + RESET);
+        */
     }
 
     public void viewSavingsBalance() {
-        System.out.println("Savings a/c balance: " + YELLOW + savingsBalance + RESET);
+        System.out.println("Savings a/c balance: " + BRIGHT_YELLOW + savingsBalance + RESET);
     }
 
     public void depositToPayrollAccount(double amount) {
