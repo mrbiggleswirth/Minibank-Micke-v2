@@ -4,10 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserManager {
-    /**
-     * ===== Business Logic, "User" Data Management =====
-     *  - UserManager: Manages user data and handles user creation and look-up.
-     */
 
     // List to store created users.
     private List<User> users = new ArrayList<>();
@@ -38,6 +34,11 @@ public class UserManager {
 
 // _____________________________________________________________________________
 
+    /**
+     * TODO: deleteUser, updateUser.
+     * text
+     */
 
+// _____________________________________________________________________________
 
 }

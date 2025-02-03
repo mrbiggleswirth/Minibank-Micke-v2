@@ -22,6 +22,8 @@ public class UserService {
         this.userManager = userManager;
     }
 
+// _____________________________________________________________________________
+
     public void createUser() {
         /**
          * TODO: Add more fields like name, adress here.
@@ -43,9 +45,14 @@ public class UserService {
         System.out.println("Savings a/c no: " + user.getSavingsAccount());
     }
 
+// _____________________________________________________________________________
+
     /**
      * TODO: Add more user-related operations in the future
      * (updating user info, deleting users),
      * add those method to user_management.UserService without cluttering Main class.
      */
+
+// _____________________________________________________________________________
+
 }

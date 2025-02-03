@@ -8,14 +8,27 @@ import static utilities.Styling.*;
 
 public class Main {
     /**
-     * ===== Summary =====
+     * ========== Summary ==========
      *
-     * - AuthNService: Handles user login and authentication (AuthN).
-     *         - User: Represents user data and behavior (a/c details, balance).
-     *  - UserManager: Manages user data and handles user creation and look-up.
-     *  - UserService: Manages user creation and logic related to user setup.
-     *     - UserMenu: Displays user-specific menu options & handles user interactions.
+     * 1. User (Data Model)
+     *    - Represents an individual user.
+     *    - Stores user attributes (e.g., person number, PIN, a/c balances).
+     *    - Contains methods for user-specific actions, like deposits/withdraw.
      *
+     * 2. UserManager (Data Management)
+     *    - Stores and manages all users in a collection (e.g., 'List<User>').
+     *    - Responsible for creating new users and looking up existing ones.
+     *
+     * 3. UserService (User Creation Logic)
+     *    - Handles user input when creating new users.
+     *    - Delegates the actual user creation to 'UserManager'.
+     *
+     * 4. UserMenu
+     *    - Displays user-specific menu options & handles user interactions.
+     *
+     * ___________________________________________________________________________________
+     *
+     *       - AuthNService: Handles user login and authentication (AuthN).
      * - TransactionService: Manages all transaction-related operations.
      *            - Styling: Provides styling and color codes for Terminal output.
      *
